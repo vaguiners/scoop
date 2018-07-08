@@ -2,8 +2,8 @@
     "homepage": "https://gradle.org",
     "version": "4.8.1",
     "license": "Apache-2.0",
-    "hash": "ce1645ff129d11aad62dab70d63426fdce6cfd646fa309dc5dc5255dd03c7c11",
-    "url": "https://services.gradle.org/distributions/gradle-4.8.1-all.zip",
+    "hash": "af334d994b5e69e439ab55b5d2b7d086da5ea6763d78054f49f147b06370ed71",
+    "url": "https://services.gradle.org/distributions/gradle-4.8.1-bin.zip",
     "extract_dir": "gradle-4.8.1",
     "bin": "bin\\gradle.bat",
     "suggest": {
@@ -17,7 +17,7 @@
         "re": "The current Gradle release is version ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://services.gradle.org/distributions/gradle-$version-all.zip",
+        "url": "https://services.gradle.org/distributions/gradle-$version-bin.zip",
         "extract_dir": "gradle-$version",
         "hash": {
             "url": "$url.sha256"

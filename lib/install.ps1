@@ -74,8 +74,8 @@ function install_app($app, $architecture, $global, $suggested, $use_cache = $tru
 function locate($app, $bucket) {
     $manifest, $url = $null, $null
 
-    # check if app is a url
-    if($app -match '^((ht)|f)tps?://') {
+    # check if app is a URL or UNC path
+    if($app -match '^(ht|f)tps?://|\\\\') {
         $url = $app
         $app = appname_from_url $url
         $manifest = url_manifest $url
@@ -494,6 +494,11 @@ function dl_urls($app, $version, $manifest, $bucket, $architecture, $dir, $use_c
                     }
                     abort $(new_issue_msg $app $bucket "hash check failed")
                 }
+                
+                if($url.Contains('sourceforge.net')) {
+                    Write-Host -f yellow 'SourceForge.net is known for causing hash validation fails. Please try again before opening a ticket.'
+                }
+                abort $(new_issue_msg $app $bucket "hash check failed")
             }
         }
     }
@@ -737,7 +742,7 @@ function run_installer($fname, $manifest, $architecture, $dir, $global) {
     $installer = installer $manifest $architecture
     if($installer.script) {
         write-output "Running installer script..."
-        Invoke-Expression $installer.script
+        Invoke-Expression (@($installer.script) -join "`r`n")
         return
     }
 
@@ -827,7 +832,7 @@ function run_uninstaller($manifest, $architecture, $dir) {
     $uninstaller = uninstaller $manifest $architecture
     if($uninstaller.script) {
         write-output "Running uninstaller script..."
-        Invoke-Expression $uninstaller.script
+        Invoke-Expression (@($uninstaller.script) -join "`r`n")
         return
     }
 

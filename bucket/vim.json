@@ -1,15 +1,15 @@
 {
     "homepage": "http://www.vim.org",
     "license": "Vim",
-    "version": "8.1.0055",
+    "version": "8.1.0127",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.0055/gvim_8.1.0055_x86.zip",
-            "hash": "3f81415e811385bf0ebae28759f802843fbf8af469d61f152f8b1a16aa5711fd"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.0127/gvim_8.1.0127_x86.zip",
+            "hash": "7ff7533d3981e7acb7f296ea4bc92ba7e927cb0eabe68398bd22dec035032575"
         },
         "64bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.0055/gvim_8.1.0055_x64.zip",
-            "hash": "9de9dd1191cd39ac1c10aa50a83a19ae1b573f3981e6edd1482ba967b08fa28d"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.0127/gvim_8.1.0127_x64.zip",
+            "hash": "7fd866ad4091f8185e7893f06733233c7a268a9b1aab2ff70c92ab51b054a3fa"
         }
     },
     "extract_dir": "vim\\vim81",
@@ -76,11 +76,13 @@
             "-d"
         ]
     ],
-    "post_install": "if( !(test-path ~\\.vimrc) -and !(test-path ~\\_vimrc) -and !(test-path ~\\vimfiles\\vimrc) -and !(test-path $env:VIM\\_vimrc) ) {
-        cp \"$dir\\vimrc_example.vim\" ~\\_vimrc
-        \"set shell=$((gcm powershell).path)\\ -executionpolicy\\ bypass\" | out-file  ~\\_vimrc -append -encoding ascii
-        echo 'Default vimrc file created in ~/_vimrc, with shell set to PowerShell.'
-    } else { echo 'Existing vimrc file found, no default configuration created' }",
+    "post_install": [
+        "if( !(test-path ~\\.vimrc) -and !(test-path ~\\_vimrc) -and !(test-path ~\\vimfiles\\vimrc) -and !(test-path $env:VIM\\_vimrc) ) {",
+        "    cp \"$dir\\vimrc_example.vim\" ~\\_vimrc",
+        "    \"set shell=$((gcm powershell).path)\\ -executionpolicy\\ bypass\" | out-file  ~\\_vimrc -append -encoding ascii",
+        "    echo 'Default vimrc file created in ~/_vimrc, with shell set to PowerShell.'",
+        "} else { echo 'Existing vimrc file found, no default configuration created' }"
+    ],
     "checkver": {
         "github": "https://github.com/vim/vim-win32-installer"
     },
