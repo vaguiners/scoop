@@ -1,0 +1,16 @@
+{
+    "homepage": "https://github.com/prasmussen/gdrive",
+    "version": "2.1.0",
+    "license": "MIT",
+    "bin": "gdrive.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://drive.google.com/uc?id=0B3X9GlR6EmbnbnBsTXlfS1J5UjQ&export=download#gdrive.exe",
+            "hash": "2356c479ebddf3933a8bbbae3785eadd462a93386954b2fce26133ed8e161648"
+        },
+        "32bit": {
+            "url": "https://docs.google.com/uc?id=0B3X9GlR6EmbnV3RNeFVUQjZvS2c&export=download#gdrive.exe",
+            "hash": "52ffe7637d13ba84e74ef66789307a76a7a4f7a20d6acf00af7668bbef95614d"
+        }
+    }
+}
